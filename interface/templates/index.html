@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="title has-text-centered">To-do List</h1>
+
+    <!-- Formulário com HTMX para adicionar tarefas -->
+    <form hx-post="/add" hx-target="#todo-list" hx-swap="innerHTML" hx-on="htmx:afterRequest: this.reset()" class="field has-addons mb-5">
+        <div class="control is-expanded">
+            <input class="input" type="text" name="titulo" placeholder="Nova tarefa..." required>
+        </div>
+        <div class="control">
+            <button class="button is-primary" type="submit">Adicionar</button>
+        </div>
+    </form>
+
+    <!-- Lista de tarefas (parcial recarregável com HTMX) -->
+    <div id="todo-list">
+        {% include "partials/list.html" %}
+    </div>
+{% endblock %}

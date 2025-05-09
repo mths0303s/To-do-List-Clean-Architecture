@@ -1,0 +1,5 @@
+2. Casos de Uso (Use Cases)
+Camada intermediária, define os casos de uso do sistema e orquestra a interação entre as entidades e os adaptadores.
+- São classes que representam os casos de uso do sistema, com seus atributos e comportamentos.
+- Devem depender das entidades do domínio e dos adaptadores de entrada e saída.
+- Devem ter métodos que implementem a lógica de negócio do sistema, orquestrando a interação entre as entidades e os adaptadores.
