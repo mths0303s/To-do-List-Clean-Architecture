@@ -54,3 +54,11 @@ class TarefaRepositorioSQLite(ITarefaRepositorio):
         if linha:
             return Tarefa(id=linha[0], titulo=linha[1], concluida=bool(linha[2]))
         return None
+    
+    def atualizar_titulo(self, id: str, novo_titulo: str) -> None:
+        cursor = self.conn.cursor()
+        cursor.execute(
+            "UPDATE tarefas SET titulo = ? WHERE id = ?",
+            (novo_titulo, id)
+        )
+        self.conn.commit()

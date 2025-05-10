@@ -1,0 +1,30 @@
+<li class="level mb-2">
+    <form 
+        hx-patch="/tarefas/{{ tarefa.id }}/alterar"
+        hx-target="#todo-list"
+        hx-swap="innerHTML"
+        style="display: flex; width: 100%;">
+        
+        <!-- Input de edição -->
+        <input 
+            class="input is-small mr-2" 
+            type="text" 
+            name="titulo" 
+            value="{{ tarefa.titulo }}" 
+            required 
+            style="flex-grow: 1;" />
+
+        <!-- Botão salvar -->
+        <button class="button is-success is-small mr-2" type="submit">Salvar</button>
+
+        <!-- Botão cancelar -->
+        <button 
+            class="button is-danger is-small mr-2"
+            type="button"
+            hx-get="/tarefas/{{ tarefa.id }}/visualizar"
+            hx-target="closest li"
+            hx-swap="outerHTML">
+            Cancelar
+        </button>
+    </form>
+</li>

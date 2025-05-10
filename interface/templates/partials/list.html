@@ -1,34 +1,7 @@
 <ul class="box" id="todo-list">
     {% if tarefas %}
         {% for item in tarefas %}
-            <li class="level mb-2">
-                <div class="level-left">
-                    <span class="{% if item.concluida %}has-text-grey-light has-text-weight-light is-italic{% endif %}">
-                        {% if item.concluida %}
-                            <del>{{ item.titulo }}</del>
-                        {% else %}
-                            {{ item.titulo }}
-                        {% endif %}
-                    </span>
-                </div>
-                <div class="level-right">
-                    <!-- Botão concluir -->
-                    <form hx-patch="/tarefas/{{ item.id }}/concluir" 
-                          hx-target="#todo-list" 
-                          hx-swap="innerHTML" class="mr-2">
-                        <button class="button is-success is-light is-small" type="submit">
-                            {% if item.concluida %}Desfazer{% else %}Concluir{% endif %}
-                        </button>
-                    </form>
-
-                    <!-- Botão de deletar -->
-                    <form hx-delete="/tarefas/{{ item.id }}/remover" 
-                          hx-target="#todo-list" 
-                          hx-swap="innerHTML" class="mr-2">
-                        <button class="button is-danger is-small" type="submit">Excluir</button>
-                    </form>
-                </div>
-            </li>
+            {% include "partials/item_tarefa.html" %}
         {% endfor %}
     {% else %}
         <p class="has-text-grey">Nenhuma tarefa adicionada.</p>

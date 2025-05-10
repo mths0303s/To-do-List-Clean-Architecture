@@ -54,3 +54,11 @@ class TarefaRepositorioCassandra(ITarefaRepositorio):
             return Tarefa(id=row.id, titulo=row.titulo, concluida=row.concluida)
         else:
             raise ValueError(f"Tarefa com id {id} não encontrada.")
+        
+
+    def atualizar_titulo(self, id: str, novo_titulo: str) -> None:
+        self.session.execute(f"""
+            UPDATE {self.table}
+            SET titulo = %s
+            WHERE id = %s
+        """, (novo_titulo, id))
